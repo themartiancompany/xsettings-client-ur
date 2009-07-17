@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.4 2009/04/09 09:51:57 sergej Exp $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Alois Belaska <lloyd@centrum.cz>
 
