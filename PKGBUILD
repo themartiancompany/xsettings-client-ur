@@ -3,7 +3,7 @@
 
 pkgname=xsettings-client
 pkgver=0.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Provides cross toolkit configuration settings such as theme parameters"
 arch=('i686' 'x86_64')
 license=('GPL')
