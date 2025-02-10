@@ -2,6 +2,9 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Alois Belaska <lloyd@centrum.cz>
 
+_os="$( \
+  uname \
+    -o)"
 _pkg="matchbox"
 _proj="yoctoproject"
 _Pkgname="Xsettings-client"
@@ -11,7 +14,6 @@ pkgrel=10
 pkgdesc="Provides cross toolkit configuration settings such as theme parameters"
 arch=(
   'x86_64'
-  $CARCH
   'arm'
   'aarch64'
   'armv7l'
@@ -26,6 +28,11 @@ url="http://${_pkg}-project.org"
 depends=(
   'libx11'
 )
+if [[ "${_os}" == "Android" ]]; then
+  depends+=(
+    'xorgproto'
+  )
+fi
 _http="https://downloads.${_proj}.org"
 _ns="releases"
 _url="${_http}/${_ns}/${_pkg}"
@@ -38,7 +45,7 @@ sha512sums=(
 
 build() {
   cd \
-    "${srcdir}/${_Pkg}-${pkgver}"
+    "${srcdir}/${_Pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr
   make
@@ -46,7 +53,7 @@ build() {
 
 package() {
   cd \
-    "${srcdir}/${_Pkg}-${pkgver}"
+    "${srcdir}/${_Pkgname}-${pkgver}"
   make \
     DESTDIR="${pkgdir}" \
     install
